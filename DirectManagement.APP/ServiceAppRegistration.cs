@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection; 
+﻿ using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DirectManagement.APP
 {
@@ -7,10 +8,8 @@ namespace DirectManagement.APP
         public static void AddApplicationServices(this IServiceCollection serviceCollection, Microsoft.Extensions.Configuration.ConfigurationManager configuration)
         {
             // MediatR yapılandırması
-            serviceCollection.AddMediatR(cfg =>
-            {
-                cfg.RegisterServicesFromAssembly(typeof(ServiceAppRegistration).Assembly);
-            });
+            serviceCollection.AddMediatR(typeof(ServiceAppRegistration).Assembly);
         }
     }
 }
+
