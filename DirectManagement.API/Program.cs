@@ -1,5 +1,5 @@
 using DirectManagement.APP;
-using DirectManagement.DAL; 
+using DirectManagement.DAL;
 using DirectManagement.DOMAIN;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -8,7 +8,10 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
+
 builder.Services.AddControllers();
+
 builder.Services.AddServicesDal();
 builder.Services.AddApplicationServices(builder.Configuration);
 
@@ -56,19 +59,18 @@ builder.Services.AddAuthorization(Options =>
     Options.AddPolicy("UserPolicy", policy => policy.RequireRole("User"));
 
 });
+ 
 
-builder.Services.AddControllers(); 
-builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
- 
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseHttpsRedirection();
+  
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

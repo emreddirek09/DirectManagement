@@ -1,0 +1,6 @@
+@DirectManagement.API_HostAddress = http://localhost:5232
+
+GET {{DirectManagement.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
