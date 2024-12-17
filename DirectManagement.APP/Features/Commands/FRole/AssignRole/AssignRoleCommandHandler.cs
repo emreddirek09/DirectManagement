@@ -1,0 +1,74 @@
+﻿using DirectManagement.DOMAIN;
+using MediatR;
+using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DirectManagement.APP.Features.Commands.FRole.AssignRole
+{
+    public class AssignRoleCommandHandler : IRequestHandler<AssignRoleCommandRequest, AssignRoleCommandResponse>
+    {
+        private readonly UserManager<AppUser> _userManager;
+
+        public AssignRoleCommandHandler(UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
+        public async Task<AssignRoleCommandResponse> Handle(AssignRoleCommandRequest request, CancellationToken cancellationToken)
+        {
+            try
+            {
+                AppUser user = await _userManager.FindByNameAsync(request.UserName);
+                if (user == null)
+                    return new AssignRoleCommandResponse()
+                    {
+                        Success = false,
+                        Message = "Kullanıcı Bulunamadı"
+                    };
+
+                var result = await _userManager.AddToRoleAsync(user, request.RoleName);
+                if (result.Succeeded)
+                    return new AssignRoleCommandResponse()
+                    {
+                        Success = true,
+                        Message = "Atama İşlemi Başarılı"
+                    };
+                else
+                {
+                    foreach (var item in result.Errors)
+                    {
+                        if (item.Code == "UserAlreadyInRole")
+                        {
+
+                            return new AssignRoleCommandResponse()
+                            {
+                                Success = true,
+                                Message = "Mevcut Atama Daha önce yapıldı"
+                            };
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return new AssignRoleCommandResponse()
+                {
+                    Success = false,
+                    Message = ex.InnerException.Message
+                };
+            }
+
+            return new AssignRoleCommandResponse()
+            {
+                Success = false,
+                Message = "Hata"
+            };
+
+        }
+    }
+
+}
