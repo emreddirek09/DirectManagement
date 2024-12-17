@@ -81,6 +81,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapFallbackToFile("/index.html");
+app.MapFallbackToFile("/swagger/index.html");
 
 app.Run();

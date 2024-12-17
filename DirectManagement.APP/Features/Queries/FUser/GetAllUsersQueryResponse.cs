@@ -10,3 +10,4 @@ namespace DirectManagement.APP.Features.Queries.FUser
     {
         public object Data { get; set; }
     }
+}
