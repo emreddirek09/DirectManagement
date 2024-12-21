@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DirectManagement.DOMAIN
 {
-    public class Content
-    {
-        public int Id { get; set; }
+    public class Content : Base
+    { 
         public string Name { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }

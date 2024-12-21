@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DirectManagement.DOMAIN
 {
-    public class NewsLetter
-    {
-        public int Id { get; set; }
+    public class NewsLetter : Base
+    { 
         public string Email { get; set; }
         public char Status { get; set; }
     }

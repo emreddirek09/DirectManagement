@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DirectManagement.DOMAIN
 {
-    public class Gallery
-    {
-        public int Id { get; set; }
+    public class Gallery : Base
+    { 
         public string Title { get; set; }
         public string SubTitle { get; set; }
         public string Image { get; set; }

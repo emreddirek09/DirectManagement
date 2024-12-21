@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DirectManagement.DOMAIN
 {
-    public class Comment
-    {
-        public int Id { get; set; }
+    public class Comment : Base
+    { 
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }

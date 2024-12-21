@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DirectManagement.DOMAIN
 {
-    public class Logo
-    {
-        public int Id { get; set; }
+    public class Logo : Base
+    { 
         public string Icon { get; set; }
         public string LogoUrl { get; set; }
         public int LogoHeight { get; set; }

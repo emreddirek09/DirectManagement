@@ -26,7 +26,9 @@ namespace DirectManagement.DAL.Contexts
         DbSet<Main> Mains { get; set; }
         DbSet<NewsLetter> NewsLetters { get; set; }
         DbSet<OparationHour> OparationHours { get; set; }
-        DbSet<Review> Reviews { get; set; } 
+        DbSet<Review> Reviews { get; set; }
+        DbSet<Product> Products { get; set; }
+
 
 
     }
