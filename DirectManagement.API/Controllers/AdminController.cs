@@ -1,6 +1,6 @@
 ﻿using DirectManagement.APP.Features.Commands.FRole.AssignRole;
 using DirectManagement.APP.Features.Commands.FRole.CreateRole;
-using DirectManagement.APP.Features.Queries.FUser;
+using DirectManagement.APP.Features.Queries.FUser.GetAllUser;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

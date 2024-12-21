@@ -1,6 +1,6 @@
 using DirectManagement.APP;
 using DirectManagement.DAL;
-using DirectManagement.DOMAIN;
+using DirectManagement.DOMAIN; 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -8,9 +8,7 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddControllers();
+builder.Services.AddControllers(); 
 
 builder.Services.AddServicesDal();
 builder.Services.AddApplicationServices(builder.Configuration);
@@ -36,6 +34,7 @@ builder.Services.AddCors(options =>
     });
 });
 
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
    .AddJwtBearer(options =>
    {
@@ -59,14 +58,17 @@ builder.Services.AddAuthorization(Options =>
     Options.AddPolicy("UserPolicy", policy => policy.RequireRole("User"));
 
 });
- 
 
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
 app.UseDefaultFiles();
 app.UseStaticFiles();
+
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -75,12 +77,11 @@ if (app.Environment.IsDevelopment())
 app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
-  
 
-app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapFallbackToFile("/swagger/index.html");
+
+app.MapFallbackToFile("/index.html");
 
 app.Run();
