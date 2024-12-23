@@ -29,6 +29,21 @@ namespace DirectManagement.DAL.Contexts
         DbSet<Review> Reviews { get; set; }
         DbSet<Product> Products { get; set; }
 
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var datas = ChangeTracker.Entries<Base>();
+            foreach (var data in datas)
+            {
+                _ = data.State switch
+                {
+                    EntityState.Added => data.Entity.CreateDate == DateTime.UtcNow,
+                    EntityState.Modified => data.Entity.UpdateDate == DateTime.UtcNow,
+                    EntityState.Deleted => data.Entity.DeleteDate == DateTime.UtcNow
+                };
+            }
+
+            return await base.SaveChangesAsync(cancellationToken);
+        }
 
 
     }
