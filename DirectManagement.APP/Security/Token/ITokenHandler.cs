@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DirectManagement.APP.Repositories.Token
+namespace DirectManagement.APP.Security.Token
 {
     public interface ITokenHandler
     {

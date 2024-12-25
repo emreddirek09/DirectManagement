@@ -1,5 +1,6 @@
 using DirectManagement.APP;
 using DirectManagement.DAL;
+using DirectManagement.DAL.SeedData;
 using DirectManagement.DOMAIN; 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -67,6 +68,12 @@ var app = builder.Build();
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
+
+// DB Strategy  //Db yoksa runtimede oluþup daha sonra projeyi ayaða kaldýrýlýr.
+using (var scope = app.Services.CreateScope())
+{
+    scope.ServiceProvider.GetRequiredService<DbInitializer>().Run();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

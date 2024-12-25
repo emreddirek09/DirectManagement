@@ -1,4 +1,4 @@
-﻿using DirectManagement.APP.Repositories.Token;
+﻿using DirectManagement.APP.Security.Token;
 using DirectManagement.DOMAIN;
 using MediatR;
 using Microsoft.AspNetCore.Identity;

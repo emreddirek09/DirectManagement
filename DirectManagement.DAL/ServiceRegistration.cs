@@ -1,9 +1,10 @@
-﻿using DirectManagement.APP.Repositories.Token;
-using DirectManagement.APP.Repositories.User;
+﻿using DirectManagement.APP.Repositories.User;
+using DirectManagement.APP.Security.Token;
 using DirectManagement.DAL.Contexts;
 using DirectManagement.DAL.Repositories.User;
+using DirectManagement.DAL.SeedData;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection; 
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DirectManagement.DAL
 {
@@ -15,6 +16,8 @@ namespace DirectManagement.DAL
             services.AddScoped<IUserReadRepository, UserReadRepository>();
             services.AddScoped<IUserWriteRepository, UserWriteRepository>();
             services.AddScoped<ITokenHandler, TokenHandler>();
+            services.AddScoped<DbInitializer>();
+
         }
     }
 }
