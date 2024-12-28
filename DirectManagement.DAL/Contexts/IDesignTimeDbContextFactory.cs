@@ -1,19 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
 
 namespace DirectManagement.DAL.Contexts
 {
-    public class DirectManagementDbContextFactory
+    public class DirectDbContextFactory : IDesignTimeDbContextFactory<DirectDbContext>
     {
         public DirectDbContext CreateDbContext(string[] args)
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
+                .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../DirectManagement.API"))
                 .AddJsonFile("appsettings.json")
                 .Build();
 

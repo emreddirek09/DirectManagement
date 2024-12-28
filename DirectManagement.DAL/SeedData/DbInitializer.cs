@@ -1,4 +1,5 @@
-﻿using DirectManagement.DAL.Contexts; 
+﻿using DirectManagement.DAL.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace DirectManagement.DAL.SeedData
 {
@@ -13,13 +14,19 @@ namespace DirectManagement.DAL.SeedData
 
         public void Run()
         {
-            var existCheck =_context.Database.CanConnect();
-            if (!existCheck) {
+            var existCheck = _context.Database.CanConnect();
+            if (existCheck)
+            {
+                // Migration'ları uygulayın
+                _context.Database.Migrate();
+            }
+            else
+            {
                 _context.Database.EnsureDeleted();
                 _context.Database.EnsureCreated();
-                _context.Seed();
-            } 
-            
-        }
+            }
+
+            _context.Seed();
+        } 
     }
 }

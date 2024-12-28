@@ -1,7 +1,7 @@
 using DirectManagement.APP;
 using DirectManagement.DAL;
 using DirectManagement.DAL.SeedData;
-using DirectManagement.DOMAIN; 
+using DirectManagement.DOMAIN;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;

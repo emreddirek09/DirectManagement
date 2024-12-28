@@ -1,9 +1,7 @@
-﻿
-
-using DirectManagement.APP.Hashing;
+﻿using DirectManagement.APP.Hashing;
 using DirectManagement.DAL.Contexts;
 using DirectManagement.DOMAIN;
-using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNetCore.Identity;
 
 namespace DirectManagement.DAL.SeedData
 {
@@ -17,6 +15,7 @@ namespace DirectManagement.DAL.SeedData
             }
             context.SaveChanges();
             HashingHelper.CreatePassword("1234", out byte[] passwordHash, out byte[] passwordSalt);
+
             AppUser user = new AppUser
             {
                 Id = 1905,
@@ -27,11 +26,12 @@ namespace DirectManagement.DAL.SeedData
                 Email = "emreddirek@gmail.com",
                 NormalizedEmail = "EMREDDIREK@GMAIL.COM",
                 EmailConfirmed = true,
-                CreateDate = DateTime.Now,
-                PasswordHash = passwordHash.ToString(),
-                SecurityStamp = passwordSalt.ToString(),
-                PhoneNumber = "12312312312"
+                PasswordHash = Convert.ToBase64String(passwordHash),
+                SecurityStamp = Convert.ToBase64String(passwordSalt),
+                PhoneNumber = "12312312312",
+                CreateDate = DateTime.Now
             };
+
             AppRole role = new AppRole
             {
                 Id = 1,
@@ -40,17 +40,15 @@ namespace DirectManagement.DAL.SeedData
                 CreateDate = DateTime.UtcNow
             };
 
-            IdentityUserRole userRole = new IdentityUserRole
+            IdentityUserRole<int> userRole = new IdentityUserRole<int>
             {
-                RoleId = "1",
-                UserId = "1905"
+                RoleId = 1,
+                UserId = 1905
             };
             context.Set<AppRole>().Add(role);
             context.Set<AppUser>().Add(user);
-            context.Set<IdentityUserRole>().Add(userRole);
+            context.Set<IdentityUserRole<int>>().Add(userRole); 
             context.SaveChanges();
         }
-
-
     }
 }

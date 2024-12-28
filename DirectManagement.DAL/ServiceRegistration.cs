@@ -16,7 +16,7 @@ namespace DirectManagement.DAL
             services.AddScoped<IUserReadRepository, UserReadRepository>();
             services.AddScoped<IUserWriteRepository, UserWriteRepository>();
             services.AddScoped<ITokenHandler, TokenHandler>();
-            services.AddScoped<DbInitializer>();
+            services.AddTransient<DbInitializer>();
 
         }
     }
