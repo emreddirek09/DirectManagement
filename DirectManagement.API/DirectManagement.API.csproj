@@ -29,8 +29,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DirectManagement.APP\DirectManagement.APP.csproj" />
+    <ProjectReference Include="..\DirectManagement.BUS\DirectManagement.BUS.csproj" />
     <ProjectReference Include="..\DirectManagement.DAL\DirectManagement.DAL.csproj" />
     <ProjectReference Include="..\DirectManagement.DOMAIN\DirectManagement.DOMAIN.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>

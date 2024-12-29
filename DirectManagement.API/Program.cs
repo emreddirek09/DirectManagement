@@ -1,4 +1,5 @@
 using DirectManagement.APP;
+using DirectManagement.BUS;
 using DirectManagement.DAL;
 using DirectManagement.DAL.SeedData;
 using DirectManagement.DOMAIN;
@@ -9,10 +10,11 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers(); 
+builder.Services.AddControllers();
 
 builder.Services.AddServicesDal();
 builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddBusinessServices();
 
 builder.Services.AddIdentity<AppUser, AppRole>(opt =>
 {
@@ -81,6 +83,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseStaticFiles();
 app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
