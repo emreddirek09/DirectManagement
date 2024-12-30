@@ -50,4 +50,9 @@
     <ProjectReference Include="..\DirectManagement.APP\DirectManagement.APP.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Storage\AWS\" />
+    <Folder Include="Services\Storage\Azure\" />
+  </ItemGroup>
+
 </Project>

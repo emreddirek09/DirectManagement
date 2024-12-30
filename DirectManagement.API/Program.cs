@@ -15,6 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddServicesDal();
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddBusinessServices();
+builder.Services.AddStorage(DirectManagement.BUS.Enums.StorageType.Local);
 
 builder.Services.AddIdentity<AppUser, AppRole>(opt =>
 {
