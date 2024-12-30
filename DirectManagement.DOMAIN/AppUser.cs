@@ -13,7 +13,7 @@ namespace DirectManagement.DOMAIN
         public string Surname { get; set; }
         public string KimlikNo { get; set; }
         public DateTime? CreateDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
+        virtual public DateTime UpdateDate { get; set; }
         public DateTime? DeleteDate { get; set; }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DirectManagement.DAL.Migrations
 {
     [DbContext(typeof(DirectDbContext))]
-    [Migration("20241229140104_migdb")]
-    partial class migdb
+    [Migration("20241230135947_mig1")]
+    partial class mig1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,7 +51,7 @@ namespace DirectManagement.DAL.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<DateTime?>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -133,7 +133,7 @@ namespace DirectManagement.DAL.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime?>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserName")
@@ -183,7 +183,7 @@ namespace DirectManagement.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Url")
@@ -239,7 +239,7 @@ namespace DirectManagement.DAL.Migrations
                     b.Property<long>("Price")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime?>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -277,7 +277,7 @@ namespace DirectManagement.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -323,7 +323,7 @@ namespace DirectManagement.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -357,12 +357,48 @@ namespace DirectManagement.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("Contents");
+                });
+
+            modelBuilder.Entity("DirectManagement.DOMAIN.Files", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(21)
+                        .HasColumnType("nvarchar(21)");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Path")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Files");
+
+                    b.HasDiscriminator().HasValue("Files");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("DirectManagement.DOMAIN.Gallery", b =>
@@ -403,7 +439,7 @@ namespace DirectManagement.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -439,7 +475,7 @@ namespace DirectManagement.DAL.Migrations
                     b.Property<int>("LogoWidth")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -473,7 +509,7 @@ namespace DirectManagement.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("WebLink")
@@ -507,7 +543,7 @@ namespace DirectManagement.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<DateTime?>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -543,7 +579,7 @@ namespace DirectManagement.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<DateTime?>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -590,7 +626,7 @@ namespace DirectManagement.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<DateTime?>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -623,7 +659,7 @@ namespace DirectManagement.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("UpdateDate")
+                    b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("YourReview")
@@ -736,6 +772,29 @@ namespace DirectManagement.DAL.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("DirectManagement.DOMAIN.InvoiceFile", b =>
+                {
+                    b.HasBaseType("DirectManagement.DOMAIN.Files");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasDiscriminator().HasValue("InvoiceFile");
+                });
+
+            modelBuilder.Entity("DirectManagement.DOMAIN.ProductImageFile", b =>
+                {
+                    b.HasBaseType("DirectManagement.DOMAIN.Files");
+
+                    b.Property<int>("Height")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Width")
+                        .HasColumnType("int");
+
+                    b.HasDiscriminator().HasValue("ProductImageFile");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

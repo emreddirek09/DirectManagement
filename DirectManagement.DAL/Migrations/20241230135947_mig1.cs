@@ -18,7 +18,7 @@ namespace DirectManagement.DAL.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -39,7 +39,7 @@ namespace DirectManagement.DAL.Migrations
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     KimlikNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -74,7 +74,7 @@ namespace DirectManagement.DAL.Migrations
                     WebImage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MobileImage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -96,7 +96,7 @@ namespace DirectManagement.DAL.Migrations
                     Level = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<long>(type: "bigint", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -115,7 +115,7 @@ namespace DirectManagement.DAL.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -136,7 +136,7 @@ namespace DirectManagement.DAL.Migrations
                     MapLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -154,12 +154,32 @@ namespace DirectManagement.DAL.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Contents", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Files",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Path = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(21)", maxLength: 21, nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Width = table.Column<int>(type: "int", nullable: true),
+                    Height = table.Column<int>(type: "int", nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Files", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -175,7 +195,7 @@ namespace DirectManagement.DAL.Migrations
                     ImageLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(1)", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -194,7 +214,7 @@ namespace DirectManagement.DAL.Migrations
                     LogoHeight = table.Column<int>(type: "int", nullable: false),
                     LogoWidth = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -213,7 +233,7 @@ namespace DirectManagement.DAL.Migrations
                     SiteTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     WebLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -230,7 +250,7 @@ namespace DirectManagement.DAL.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(1)", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -249,7 +269,7 @@ namespace DirectManagement.DAL.Migrations
                     EndTime = table.Column<TimeOnly>(type: "time", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(1)", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -271,7 +291,7 @@ namespace DirectManagement.DAL.Migrations
                     ProductStock = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(1)", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -290,7 +310,7 @@ namespace DirectManagement.DAL.Migrations
                     YourReview = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Quality = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -476,6 +496,9 @@ namespace DirectManagement.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Contents");
+
+            migrationBuilder.DropTable(
+                name: "Files");
 
             migrationBuilder.DropTable(
                 name: "Galleries");

@@ -6,7 +6,7 @@ using DirectManagement.DOMAIN;
 
 namespace DirectManagement.DAL.Repositories.Mains
 {
-    public class MainReadRepository : ReadRepository<Main>, IMainReadRespository
+    public class MainReadRepository : ReadRepository<Main>, IMainReadRepository
     {
         public MainReadRepository(DirectDbContext context) : base(context)
         {

@@ -10,7 +10,9 @@ namespace DirectManagement.DAL.Contexts
           : base(options)
         {
         }
-
+        DbSet<Files> Files { get; set; }
+        DbSet<ProductImageFile> ProductImageFiles { get; set; }
+        DbSet<InvoiceFile> InvoiceFiles { get; set; }
         DbSet<Banner> Banners { get; set; }
         DbSet<Category> Categories { get; set; }
         DbSet<Comment> Comments { get; set; }

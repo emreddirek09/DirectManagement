@@ -7,6 +7,42 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="obj\Debug\net9.0\.NETCoreApp,Version=v9.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net9.0\DirectManagement.BUS.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net9.0\DirectManagement.BUS.GlobalUsings.g.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\net9.0\DirectManagement.BUS.deps.json" />
+    <Content Include="obj\Debug\net9.0\DirectManagement.BUS.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\net9.0\DirectManagement.BUS.sourcelink.json" />
+    <Content Include="obj\DirectManagement.BUS.csproj.nuget.dgspec.json" />
+    <Content Include="obj\project.assets.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net9.0\DirectManagement.APP.dll" />
+    <None Include="bin\Debug\net9.0\DirectManagement.APP.pdb" />
+    <None Include="bin\Debug\net9.0\DirectManagement.BUS.dll" />
+    <None Include="bin\Debug\net9.0\DirectManagement.BUS.pdb" />
+    <None Include="bin\Debug\net9.0\DirectManagement.DOMAIN.dll" />
+    <None Include="bin\Debug\net9.0\DirectManagement.DOMAIN.pdb" />
+    <None Include="obj\Debug\net9.0\DirectMa.88542A90.Up2Date" />
+    <None Include="obj\Debug\net9.0\DirectManagement.BUS.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net9.0\DirectManagement.BUS.assets.cache" />
+    <None Include="obj\Debug\net9.0\DirectManagement.BUS.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net9.0\DirectManagement.BUS.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net9.0\DirectManagement.BUS.dll" />
+    <None Include="obj\Debug\net9.0\DirectManagement.BUS.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net9.0\DirectManagement.BUS.pdb" />
+    <None Include="obj\Debug\net9.0\refint\DirectManagement.BUS.dll" />
+    <None Include="obj\Debug\net9.0\ref\DirectManagement.BUS.dll" />
+    <None Include="obj\DirectManagement.BUS.csproj.nuget.g.props" />
+    <None Include="obj\DirectManagement.BUS.csproj.nuget.g.targets" />
+    <None Include="obj\project.nuget.cache" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8" />
   </ItemGroup>
 
