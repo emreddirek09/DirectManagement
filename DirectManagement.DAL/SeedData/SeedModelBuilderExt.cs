@@ -18,7 +18,6 @@ namespace DirectManagement.DAL.SeedData
 
             AppUser user = new AppUser
             {
-                Id = 1905,
                 Name = "Emre",
                 Surname = "Direk",
                 UserName = "emreddirek",
@@ -29,26 +28,30 @@ namespace DirectManagement.DAL.SeedData
                 PasswordHash = Convert.ToBase64String(passwordHash),
                 SecurityStamp = Convert.ToBase64String(passwordSalt),
                 PhoneNumber = "12312312312",
+                KimlikNo = "11111111111",
                 CreateDate = DateTime.Now
             };
 
             AppRole role = new AppRole
             {
-                Id = 1,
                 Name = "Admin",
                 NormalizedName = "ADMIN",
                 CreateDate = DateTime.UtcNow
             };
+ 
+            context.Set<AppRole>().Add(role);
+            context.Set<AppUser>().Add(user);
+            context.SaveChanges();
 
             IdentityUserRole<int> userRole = new IdentityUserRole<int>
             {
-                RoleId = 1,
-                UserId = 1905
+                RoleId = role.Id,
+                UserId = user.Id
             };
-            context.Set<AppRole>().Add(role);
-            context.Set<AppUser>().Add(user);
-            context.Set<IdentityUserRole<int>>().Add(userRole); 
+
+            context.Set<IdentityUserRole<int>>().Add(userRole);
             context.SaveChanges();
+
         }
     }
 }
