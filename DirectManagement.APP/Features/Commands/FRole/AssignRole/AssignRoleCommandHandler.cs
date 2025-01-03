@@ -1,4 +1,6 @@
-﻿using DirectManagement.DOMAIN;
+﻿using AlpataBLL.Constants;
+using DirectManagement.APP.Features.Commands.FMain.CreateMain;
+using DirectManagement.DOMAIN;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -22,12 +24,12 @@ namespace DirectManagement.APP.Features.Commands.FRole.AssignRole
         {
             try
             {
-                AppUser user = await _userManager.FindByNameAsync(request.UserName);
+                var user = await _userManager.FindByNameAsync(request.UserName);
                 if (user == null)
                     return new AssignRoleCommandResponse()
                     {
                         Success = false,
-                        Message = "Kullanıcı Bulunamadı"
+                        Message = Messages.NotFound,
                     };
 
                 var result = await _userManager.AddToRoleAsync(user, request.RoleName);
@@ -35,7 +37,7 @@ namespace DirectManagement.APP.Features.Commands.FRole.AssignRole
                     return new AssignRoleCommandResponse()
                     {
                         Success = true,
-                        Message = "Atama İşlemi Başarılı"
+                        Message = Messages.RegisterSuccess
                     };
                 else
                 {
@@ -47,7 +49,7 @@ namespace DirectManagement.APP.Features.Commands.FRole.AssignRole
                             return new AssignRoleCommandResponse()
                             {
                                 Success = true,
-                                Message = "Mevcut Atama Daha önce yapıldı"
+                                Message = Messages.RegisterFailed
                             };
                         }
                     }
@@ -55,17 +57,17 @@ namespace DirectManagement.APP.Features.Commands.FRole.AssignRole
             }
             catch (Exception ex)
             {
-                return new AssignRoleCommandResponse()
+
+                return new AssignRoleCommandResponse
                 {
                     Success = false,
-                    Message = ex.InnerException.Message
+                    Message = ex.Message.Trim().ToString()
                 };
             }
-
-            return new AssignRoleCommandResponse()
+            return new AssignRoleCommandResponse
             {
                 Success = false,
-                Message = "Hata"
+                Message = Messages.RegisterFailed
             };
 
         }

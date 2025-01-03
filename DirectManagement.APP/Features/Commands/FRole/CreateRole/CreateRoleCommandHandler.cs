@@ -1,4 +1,5 @@
-﻿using DirectManagement.DOMAIN;
+﻿using AlpataBLL.Constants;
+using DirectManagement.DOMAIN;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -32,7 +33,7 @@ namespace DirectManagement.APP.Features.Commands.FRole.CreateRole
                         return new CreateRoleCommandResponse
                         {
                             Success = true,
-                            Message = "Role tanımlaması oluşturuldu!"
+                            Message = Messages.RegisterSuccess
                         };
                 }
 
@@ -40,14 +41,18 @@ namespace DirectManagement.APP.Features.Commands.FRole.CreateRole
             catch (Exception ex)
             {
 
-                throw;
+                return new CreateRoleCommandResponse
+                {
+                    Success = false,
+                    Message = ex.Message.Trim().ToString()
+                };
             }
-
             return new CreateRoleCommandResponse
             {
                 Success = false,
-                Message = "Hata"
+                Message = Messages.RegisterFailed
             };
+
         }
     }
 }

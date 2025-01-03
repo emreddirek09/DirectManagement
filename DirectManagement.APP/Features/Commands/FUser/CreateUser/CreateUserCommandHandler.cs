@@ -1,4 +1,6 @@
-﻿using DirectManagement.APP.Repositories.User;
+﻿using AlpataBLL.Constants;
+using DirectManagement.APP.Features.Commands.FRole.AssignRole;
+using DirectManagement.APP.Repositories.User;
 using DirectManagement.DOMAIN;
 using MediatR;
 using Microsoft.AspNetCore.Identity; 
@@ -37,20 +39,22 @@ namespace DirectManagement.APP.Features.Commands.FUser.CreateUser
                     return new CreateUserCommandResponse
                     {
                         Success = true,
-                        Message = "Kullanıcı başarıyla oluşturuldu!"
+                        Message = Messages.RegisterSuccess
                     };
             }
             catch (Exception ex)
             {
 
-                throw;
+                return new CreateUserCommandResponse
+                {
+                    Success = false,
+                    Message = ex.Message.Trim().ToString()
+                };
             }
-
-
             return new CreateUserCommandResponse
             {
                 Success = false,
-                Message = "Hata"
+                Message = Messages.RegisterFailed
             };
         }
     }

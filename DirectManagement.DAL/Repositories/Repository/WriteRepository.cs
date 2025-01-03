@@ -1,18 +1,21 @@
 ﻿using DirectManagement.APP.Repositories.Repository;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 using DirectManagement.DAL.Contexts;
+using AlpataBLL.BaseResult.Abstracts;
+using AlpataBLL.BaseResult.Concretes;
+using AutoMapper;
 
 namespace DirectManagement.DAL.Repositories.Repository
 {
     public class WriteRepository<T> : IWriteRepository<T> where T : class
     {
-        private readonly DirectDbContext _context;
+        private readonly DirectDbContext _context; 
 
-        public WriteRepository(DirectDbContext context)
+        public WriteRepository(DirectDbContext context )
         {
             _context = context;
-        }
+         }
 
         public DbSet<T> table => _context.Set<T>();
 
@@ -21,7 +24,6 @@ namespace DirectManagement.DAL.Repositories.Repository
             EntityEntry<T> entityEntry = await table.AddAsync(values);
             return entityEntry.State == EntityState.Added;
         }
-
         public async Task<bool> AddRangeAsync(List<T> values)
         {
             await table.AddRangeAsync(values);
@@ -46,7 +48,8 @@ namespace DirectManagement.DAL.Repositories.Repository
             EntityEntry entry = table.Update(values);
             return entry.State == EntityState.Modified;
         }
-
+         
         public async Task<int> SaveAsync() => await _context.SaveChangesAsync();
+         
     }
 }

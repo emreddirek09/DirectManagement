@@ -1,4 +1,6 @@
-﻿using DirectManagement.DOMAIN;
+﻿using AlpataBLL.Constants;
+using DirectManagement.APP.Features.Commands.FUser.CreateUser;
+using DirectManagement.DOMAIN;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -20,25 +22,39 @@ namespace DirectManagement.APP.Features.Queries.FUser.GetAllUser
         }
 
         public async Task<GetAllUsersQueryResponse> Handle(GetAllUsersQueryRequest request, CancellationToken cancellationToken)
-        {
-            var users = await _userManager.Users
-           .Select(user => new
-           {
-               user.Id,
-               user.Name,
-               user.Surname,
-               user.UserName,
-               user.Email,
-               user.PhoneNumber,
-               user.KimlikNo
-           }).ToListAsync();
+        {           
 
+            try
+            {
+                var users = await _userManager.Users
+          .Select(user => new
+          {
+              user.Id,
+              user.Name,
+              user.Surname,
+              user.UserName,
+              user.Email,
+              user.PhoneNumber,
+              user.KimlikNo
+          }).ToListAsync();
+            }
+            catch (Exception ex)
+            {
 
-
+                return new GetAllUsersQueryResponse
+                {
+                    Success = false,
+                    Message = ex.Message.Trim().ToString()
+                };
+            }
             return new GetAllUsersQueryResponse
             {
-                Data = users
+                Success = false,
+                Message = Messages.RegisterFailed,
+                Data = null
+
             };
+             
         }
     }
 }

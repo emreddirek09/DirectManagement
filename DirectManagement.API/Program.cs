@@ -1,3 +1,4 @@
+using AutoMapper;
 using DirectManagement.APP;
 using DirectManagement.BUS;
 using DirectManagement.DAL;
@@ -17,6 +18,9 @@ builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddBusinessServices();
 builder.Services.AddStorage(DirectManagement.BUS.Enums.StorageType.Local);
 
+//#region Auto Mapper
+//builder.Services.AddAutoMapper();
+//#endregion
 builder.Services.AddIdentity<AppUser, AppRole>(opt =>
 {
     opt.Password.RequiredLength = 3;

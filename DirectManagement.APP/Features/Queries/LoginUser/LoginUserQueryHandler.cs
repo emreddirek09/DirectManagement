@@ -1,4 +1,6 @@
-﻿using DirectManagement.APP.Security.Token;
+﻿using AlpataBLL.Constants;
+using DirectManagement.APP.Features.Commands.FUser.CreateUser;
+using DirectManagement.APP.Security.Token;
 using DirectManagement.DOMAIN;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -28,51 +30,64 @@ namespace DirectManagement.APP.Features.Queries.LoginUser
 
         public async Task<LoginUserQueryResponse> Handle(LoginUserQueryRequest request, CancellationToken cancellationToken)
         {
-            AppUser _user = await _userManager.FindByNameAsync(request.UserNameOrMail);
-            if (_user == null)
-                _user = await _userManager.FindByEmailAsync(request.UserNameOrMail);
-
-            if (_user == null)
-                return new LoginUserQueryResponse()
-                {
-                    Message = "Kayıt Bulunamadı",
-                    Success = false
-                };
-            SignInResult result = await _signInMAnager.CheckPasswordSignInAsync(_user, request.UserPassword, false);
-
-
-            if (result.Succeeded)
+            try
             {
-                var userRoles = await _userManager.GetRolesAsync(_user);
-                var authClaims = new List<Claim>
+                AppUser _user = await _userManager.FindByNameAsync(request.UserNameOrMail);
+                if (_user == null)
+                    _user = await _userManager.FindByEmailAsync(request.UserNameOrMail);
+
+                if (_user == null)
+                    return new LoginUserQueryResponse()
+                    {
+                        Message = Messages.NotFound,
+                        Success = false
+                    };
+                SignInResult result = await _signInMAnager.CheckPasswordSignInAsync(_user, request.UserPassword, false);
+
+
+                if (result.Succeeded)
+                {
+                    var userRoles = await _userManager.GetRolesAsync(_user);
+                    var authClaims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Role,_user.PhoneNumber)
                 };
 
-                await _userManager.AddClaimAsync(_user, new Claim("_UserName", _user.UserName));
+                    await _userManager.AddClaimAsync(_user, new Claim("_UserName", _user.UserName));
 
-                await _signInMAnager.SignInAsync(_user, false);
+                    await _signInMAnager.SignInAsync(_user, false);
 
 
-                authClaims.AddRange(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
+                    authClaims.AddRange(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
 
-                DTOS.Token token = _tokenHandler.CreateAccessToken(5, authClaims);
+                    DTOS.Token token = _tokenHandler.CreateAccessToken(5, authClaims);
 
-                return new LoginUserQueryResponse()
+                    return new LoginUserQueryResponse()
+                    {
+                        Message = "Giriş Başarılı",
+                        Success = true,
+                        FullName = _user.Name + " " + _user.Surname,
+                        UserId = _user.Id,
+                        Role = userRoles[0] ?? "",
+                        Token = token
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return new LoginUserQueryResponse
                 {
-                    Message = "Giriş Başarılı",
-                    Success = true,
-                    FullName = _user.Name + " " + _user.Surname,
-                    UserId = _user.Id,
-                    Role = userRoles[0] ?? "",
-                    Token = token
+                    Success = false,
+                    Message = ex.Message.Trim().ToString()
                 };
             }
-            return new LoginUserQueryResponse()
+            return new LoginUserQueryResponse
             {
-                Message = "Kimlik Doğrulama Hatası",
-                Success = false
+                Success = false,
+                Message = Messages.LoginFailed
             };
+
         }
     }
 }
