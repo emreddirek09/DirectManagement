@@ -3,7 +3,7 @@ using DirectManagement.DOMAIN;
 
 namespace DirectManagement.APP.Repositories.OparationHours
 {
-    public interface IOperationHourReadRepository:IReadRepository<OparationHour>
+    public interface IOparationHourReadRepository:IReadRepository<OparationHour>
     {
     }
 }

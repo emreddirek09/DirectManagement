@@ -84,8 +84,8 @@ namespace DirectManagement.DAL
             services.AddScoped<INewsLetterReadRepository, NewsLetterReadRepository>();
             services.AddScoped<INewsLetterWriteRepository, NewsLetterWriteRepository>();
 
-            services.AddScoped<IOperationHourReadRepository, OperationHourReadRepository>();
-            services.AddScoped<IOperationHourWriteRepository, OperationHourWriteRepository>();
+            services.AddScoped<IOparationHourReadRepository, OperationHourReadRepository>();
+            services.AddScoped<IOparationHourWriteRepository, OperationHourWriteRepository>();
 
             services.AddScoped<IProductImageFileReadRepository, ProductImageFileReadRepository>();
             services.AddScoped<IProductImageFileWriteRepository, ProductImageFileWriteRepository>();

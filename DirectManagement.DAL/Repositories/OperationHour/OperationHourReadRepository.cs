@@ -5,7 +5,7 @@ using DirectManagement.DOMAIN;
 
 namespace DirectManagement.DAL.Repositories.OperationHour
 {
-    public class OperationHourReadRepository : ReadRepository<OparationHour>, IOperationHourReadRepository
+    public class OperationHourReadRepository : ReadRepository<OparationHour>, IOparationHourReadRepository
     {
         public OperationHourReadRepository(DirectDbContext context) : base(context)
         {
