@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DirectManagement.APP.Abstractions.Storage
+namespace DirectManagement.APPAbstractions.Storage
 {
     public interface IStorageService : IStorage
     {

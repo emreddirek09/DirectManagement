@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DirectManagement.APP.Features.Commands.FBanner.CreateBanner
+namespace DirectManagement.APPFeatures.Commands.FBanner.CreateBanner
 {
     public class CreateBannerCommandResponse
     {
