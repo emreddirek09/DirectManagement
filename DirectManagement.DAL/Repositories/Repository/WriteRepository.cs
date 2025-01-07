@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore;
 using DirectManagement.DAL.Contexts;
-using AlpataBLL.BaseResult.Abstracts;
-using AlpataBLL.BaseResult.Concretes;
+using DirectManagement.APP.BaseResult.Abstracts;
+using DirectManagement.APP.BaseResult.Concretes;
 using AutoMapper;
 
 namespace DirectManagement.DAL.Repositories.Repository

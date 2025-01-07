@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DirectManagement.APPAbstractions.Storage.Azure
+namespace DirectManagement.APP.Abstractions.Storage.Azure
 {
     public interface IAzureStorage : IStorage
     {

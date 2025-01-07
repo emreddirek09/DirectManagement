@@ -1,4 +1,4 @@
-﻿using AlpataBLL.Constants;
+﻿using DirectManagement.APP.Constants;
 using DirectManagement.APP.Repositories.Mains;
 using DirectManagement.APP.Repositories.Repository;
 using MediatR;

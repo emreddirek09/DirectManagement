@@ -1,4 +1,4 @@
-﻿using AlpataBLL.BaseResult.Concretes;
+﻿using DirectManagement.APP.BaseResult.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

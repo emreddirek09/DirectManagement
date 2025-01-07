@@ -1,5 +1,5 @@
 ﻿
-namespace AlpataBLL.Constants
+namespace DirectManagement.APP.Constants
 {
     public class Messages
     {

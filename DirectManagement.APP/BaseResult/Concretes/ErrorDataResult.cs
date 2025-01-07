@@ -1,4 +1,4 @@
-﻿namespace AlpataBLL.BaseResult.Concretes
+﻿namespace DirectManagement.APP.BaseResult.Concretes
 {
     public class ErrorDataResult<T> : DataResult<T>
     {

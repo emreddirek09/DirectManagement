@@ -1,4 +1,4 @@
-﻿using DirectManagement.APPRepositories.Comments;
+﻿using DirectManagement.APP.Repositories.Comments;
 using MediatR;
 using System;
 using System.Collections.Generic;

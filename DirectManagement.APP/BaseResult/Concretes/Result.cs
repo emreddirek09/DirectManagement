@@ -1,11 +1,11 @@
-﻿using AlpataBLL.BaseResult.Abstracts;
+﻿using DirectManagement.APP.BaseResult.Abstracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlpataBLL.BaseResult.Concretes
+namespace DirectManagement.APP.BaseResult.Concretes
 {
     public class Result : IBaseResult
     {

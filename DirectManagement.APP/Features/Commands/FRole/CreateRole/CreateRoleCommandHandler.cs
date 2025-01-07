@@ -1,4 +1,4 @@
-﻿using AlpataBLL.Constants;
+﻿using DirectManagement.APP.Constants;
 using DirectManagement.DOMAIN;
 using MediatR;
 using Microsoft.AspNetCore.Identity;

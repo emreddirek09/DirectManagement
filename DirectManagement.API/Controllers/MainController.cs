@@ -1,4 +1,4 @@
-﻿using AlpataBLL.BaseResult.Concretes;
+﻿using DirectManagement.APP.BaseResult.Concretes;
 using DirectManagement.APP.Features.Commands.FMain.CreateMain;
 using DirectManagement.APP.Features.Commands.FUser.CreateUser;
 using MediatR;

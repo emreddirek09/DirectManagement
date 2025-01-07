@@ -1,4 +1,4 @@
-﻿using AlpataBLL.BaseResult.Abstracts;
+﻿using DirectManagement.APP.BaseResult.Abstracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

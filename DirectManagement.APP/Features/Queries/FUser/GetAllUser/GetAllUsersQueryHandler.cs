@@ -1,4 +1,4 @@
-﻿using AlpataBLL.Constants;
+﻿using DirectManagement.APP.Constants;
 using DirectManagement.APP.Features.Commands.FUser.CreateUser;
 using DirectManagement.DOMAIN;
 using MediatR;
