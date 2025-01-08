@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DirectManagement.APPFeatures.Commands.FComment.CreateComment
+namespace DirectManagement.APP.Features.Commands.FComment.CreateComment
 {
     public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommandRequest, CreateCommentCommandResponse>
     {

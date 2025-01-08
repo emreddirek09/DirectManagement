@@ -1,6 +1,6 @@
 ﻿
 using DirectManagement.APP.Repositories.Contacts;
-using DirectManagement.APPFeatures.Commands.FContact.CreateContact;
+using DirectManagement.APP.Features.Commands.FContact.CreateContact;
 using MediatR;
 
 namespace DirectManagement.APP.Features.Commands.FContact.CreateContact;
