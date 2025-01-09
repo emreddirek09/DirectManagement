@@ -1,6 +1,6 @@
 ﻿using DirectManagement.APP.Hashing;
 using DirectManagement.DAL.Contexts;
-using DirectManagement.DOMAIN;
+using DirectManagement.DOMAIN.Entities.Concretes;
 using Microsoft.AspNetCore.Identity;
 
 namespace DirectManagement.DAL.SeedData

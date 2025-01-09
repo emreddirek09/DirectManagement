@@ -1,5 +1,5 @@
 ﻿using DirectManagement.APP.Constants;
-using DirectManagement.DOMAIN;
+using DirectManagement.DOMAIN.Entities.Concretes;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;

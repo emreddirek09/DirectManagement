@@ -3,6 +3,6 @@ using D = DirectManagement.DOMAIN;
 
 namespace DirectManagement.APP.Repositories.Files;
 
-public interface IFileReadRepository : IReadRepository<D.Files>
+public interface IFileReadRepository : IReadRepository<D.Entities.Concretes.Files>
 {
 }

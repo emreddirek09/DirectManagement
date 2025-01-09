@@ -2,7 +2,7 @@
 using DirectManagement.APP.Repositories.Mains;
 using DirectManagement.DAL.Contexts;
 using DirectManagement.DAL.Repositories.Repository;
-using DirectManagement.DOMAIN; 
+using DirectManagement.DOMAIN.Entities.Concretes;
 
 namespace DirectManagement.DAL.Repositories.Mains
 {

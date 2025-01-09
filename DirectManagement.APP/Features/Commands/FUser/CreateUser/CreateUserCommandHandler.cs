@@ -1,9 +1,9 @@
 ﻿using DirectManagement.APP.Constants;
 using DirectManagement.APP.Features.Commands.FRole.AssignRole;
 using DirectManagement.APP.Repositories.User;
-using DirectManagement.DOMAIN;
+using DirectManagement.DOMAIN.Entities.Concretes;
 using MediatR;
-using Microsoft.AspNetCore.Identity; 
+using Microsoft.AspNetCore.Identity;
 
 namespace DirectManagement.APP.Features.Commands.FUser.CreateUser
 {

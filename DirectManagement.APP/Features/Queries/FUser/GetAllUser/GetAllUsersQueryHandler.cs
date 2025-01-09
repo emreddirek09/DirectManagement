@@ -1,6 +1,6 @@
 ﻿using DirectManagement.APP.Constants;
 using DirectManagement.APP.Features.Commands.FUser.CreateUser;
-using DirectManagement.DOMAIN;
+using DirectManagement.DOMAIN.Entities.Concretes;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

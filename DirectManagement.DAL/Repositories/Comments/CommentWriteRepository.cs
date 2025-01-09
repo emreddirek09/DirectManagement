@@ -1,7 +1,7 @@
 ﻿using DirectManagement.APP.Repositories.Comments;
 using DirectManagement.DAL.Contexts;
 using DirectManagement.DAL.Repositories.Repository;
-using DirectManagement.DOMAIN;
+using DirectManagement.DOMAIN.Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

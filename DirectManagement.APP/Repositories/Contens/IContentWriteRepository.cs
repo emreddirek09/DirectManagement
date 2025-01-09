@@ -1,5 +1,5 @@
 ﻿using DirectManagement.APP.Repositories.Repository;
-using DirectManagement.DOMAIN; 
+using DirectManagement.DOMAIN.Entities.Concretes;
 
 namespace DirectManagement.APP.Repositories.Contents
 {

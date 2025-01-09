@@ -16,8 +16,7 @@ namespace DirectManagement.DAL.SeedData
         {
             var existCheck = _context.Database.CanConnect();
             if (existCheck)
-            {
-                // Migration'ları uygulayın
+            { 
                 _context.Database.Migrate();
             }
             else

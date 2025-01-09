@@ -1,6 +1,6 @@
 ﻿using DirectManagement.APP.Constants;
 using DirectManagement.APP.Features.Commands.FMain.CreateMain;
-using DirectManagement.DOMAIN;
+using DirectManagement.DOMAIN.Entities.Concretes;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;

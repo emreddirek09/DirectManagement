@@ -5,7 +5,7 @@ using DirectManagement.DAL.Repositories.Repository;
 
 namespace DirectManagement.DAL.Repositories.Files;
 
-public class FileWriteRepository : WriteRepository<DOMAIN.Files>, IFileWriteRepository
+public class FileWriteRepository : WriteRepository<DOMAIN.Entities.Concretes.Files>, IFileWriteRepository
 {
     public FileWriteRepository(DirectDbContext context) : base(context)
     {

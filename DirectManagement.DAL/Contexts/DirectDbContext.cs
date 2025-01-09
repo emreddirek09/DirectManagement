@@ -1,6 +1,7 @@
-﻿using DirectManagement.DOMAIN;
+﻿using DirectManagement.DOMAIN.Entities.BaseEntitiy;
+using DirectManagement.DOMAIN.Entities.Concretes;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 
 namespace DirectManagement.DAL.Contexts
 {
