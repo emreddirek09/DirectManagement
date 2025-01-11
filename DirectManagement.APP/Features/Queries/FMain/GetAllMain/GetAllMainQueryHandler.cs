@@ -11,8 +11,45 @@ public class GetAllMainQueryHandler : IRequestHandler<GetAllMainQueryRequest, Ge
         _mainReadRepository = mainReadRepository;
     }
 
-    public Task<GetAllMainQueryResponse> Handle(GetAllMainQueryRequest request, CancellationToken cancellationToken)
+    public async Task<GetAllMainQueryResponse> Handle(GetAllMainQueryRequest request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var totalCount = _mainReadRepository.GetAllAsync(tracking: false).Result.Count;
+        var mains = _mainReadRepository.GetAllAsync(tracking: false, skip: request.Page * request.Size, take
+            : request.Size).Result
+            .Select(m => new
+            {
+                m.Id,
+                m.CompanyName,
+                m.CompanyNo,
+                m.SiteTitle,
+                m.WebLink,
+                m.CreateDate,
+                m.DeleteDate,
+                m.UpdateDate
+            }).ToList();
+        return new GetAllMainQueryResponse()
+        {
+            TotalCount = totalCount,
+            Main = null
+        };
+
+        //var totalCount = _mainReadRepository.GetAll(false).Result.Count;
+        //var mains = _mainReadRepository.GetAll(false).Result.Skip(request.Page * request.Size).Take(request.Size)
+        //    .Select(m => new
+        //    {
+        //        m.Id,
+        //        m.CompanyName,
+        //        m.CompanyNo,
+        //        m.SiteTitle,
+        //        m.WebLink,
+        //        m.CreateDate,
+        //        m.DeleteDate,
+        //        m.UpdateDate
+        //    }).ToList();
+        //return new GetAllMainQueryResponse()
+        //{
+        //    Main = mains,
+        //    TotalCount = totalCount
+        //};
     }
 }

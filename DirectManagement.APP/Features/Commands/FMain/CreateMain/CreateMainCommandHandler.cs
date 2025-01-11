@@ -24,7 +24,7 @@ namespace DirectManagement.APP.Features.Commands.FMain.CreateMain
 
             try
             {
-                var res = await _mainWriteRepository.AddAsync(new DOMAIN.Main
+                var res = await _mainWriteRepository.AddAsync(new DOMAIN.Entities.Concretes.Main
                 {
                     CompanyName = request.CompanyName,
                     CompanyNo = request.CompanyNo,
@@ -54,7 +54,7 @@ namespace DirectManagement.APP.Features.Commands.FMain.CreateMain
             {
                 Success = false,
                 Message = Messages.RegisterFailed
-            }; 
+            };
         }
     }
 }

@@ -9,5 +9,7 @@ namespace DirectManagement.APP.Features.Queries.FComment.GetAllComment
 {
     public class GetAllCommentQueryRequest : IRequest<GetAllCommentQueryResponse>
     {
+        public int Page { get; set; } = 0;
+        public int Size { get; set; } = 5;
     }
 }

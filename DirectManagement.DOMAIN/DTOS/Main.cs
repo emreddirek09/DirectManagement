@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DirectManagement.DOMAIN.Entities.Concretes
+namespace DirectManagement.DOMAIN.DTOS
 {
     public class Main : Base
     {
@@ -13,6 +13,5 @@ namespace DirectManagement.DOMAIN.Entities.Concretes
         public string CompanyNo { get; set; }
         public string SiteTitle { get; set; }
         public string WebLink { get; set; }
-         
     }
 }
