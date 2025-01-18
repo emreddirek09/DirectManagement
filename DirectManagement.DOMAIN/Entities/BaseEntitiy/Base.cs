@@ -10,7 +10,7 @@ namespace DirectManagement.DOMAIN.Entities.BaseEntitiy
     {
         public int Id { get; set; }
         public DateTime? CreateDate { get; set; }
-        virtual public DateTime UpdateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
         public DateTime? DeleteDate { get; set; }
 
 

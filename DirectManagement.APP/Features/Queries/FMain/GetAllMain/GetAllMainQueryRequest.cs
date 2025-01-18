@@ -1,9 +1,15 @@
-﻿using MediatR;
+﻿using DirectManagement.APP.BaseResult.Abstracts;
+using MediatR;
 
 namespace DirectManagement.APP.Features.Queries.FMain.GetAllMain;
-
-public class GetAllMainQueryRequest : IRequest<GetAllMainQueryResponse>
+public class GetAllMainQueryRequest : IRequest<IDataResult<List<GetAllMainQueryResponse>>>
 {
-    public int Page { get; set; } = 0;
-    public int Size { get; set; } = 5;
+    public GetAllMainQueryRequest(int page, int size)
+    {
+        Page = page = 0;
+        Size = size = 5;
+    }
+
+    public int Page { get; set; }
+    public int Size { get; set; }
 }

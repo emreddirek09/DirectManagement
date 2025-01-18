@@ -39,7 +39,7 @@ namespace DirectManagement.API.Controllers
             }
 
             var result = await _mediator.Send(model);
-            return null;
+            return result.Success ? Ok(result) : BadRequest(result);
         }
     }
 }

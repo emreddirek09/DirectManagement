@@ -1,5 +1,6 @@
 using AutoMapper;
 using DirectManagement.APP;
+using DirectManagement.APP.Profiles;
 using DirectManagement.BUS;
 using DirectManagement.DAL;
 using DirectManagement.DAL.SeedData;
@@ -18,9 +19,17 @@ builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddBusinessServices();
 builder.Services.AddStorage(DirectManagement.BUS.Enums.StorageType.Local);
 
-//#region Auto Mapper
-//builder.Services.AddAutoMapper();
-//#endregion
+#region Auto Mapper
+var mapperConfiguration = new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new MainProfile());
+});
+
+IMapper mapper = mapperConfiguration.CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(typeof(MainProfile));
+
+#endregion
 builder.Services.AddIdentity<AppUser, AppRole>(opt =>
 {
     opt.Password.RequiredLength = 3;
