@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,15 +20,15 @@ builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddBusinessServices();
 builder.Services.AddStorage(DirectManagement.BUS.Enums.StorageType.Local);
 
-#region Auto Mapper
-var mapperConfiguration = new MapperConfiguration(cfg =>
+builder.Services.AddControllers().AddJsonOptions(options =>
 {
-    cfg.AddProfile(new MainProfile());
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+#region Auto Mapper 
 
-IMapper mapper = mapperConfiguration.CreateMapper();
-builder.Services.AddSingleton(mapper);
-builder.Services.AddAutoMapper(typeof(MainProfile));
+builder.Services.AddAutoMapper(typeof(IProfile));
 
 #endregion
 builder.Services.AddIdentity<AppUser, AppRole>(opt =>
@@ -75,10 +76,7 @@ builder.Services.AddAuthorization(Options =>
     Options.AddPolicy("UserPolicy", policy => policy.RequireRole("User"));
 
 });
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 

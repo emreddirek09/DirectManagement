@@ -5,6 +5,7 @@ using DirectManagement.APP.Constants;
 using DirectManagement.APP.Features.Queries.FMain.GetAllMain;
 using DirectManagement.APP.Profiles;
 using DirectManagement.APP.Repositories.Mains;
+using DirectManagement.DOMAIN.Entities.Concretes;
 using MediatR;
 using System.Collections.Generic;
 
@@ -23,9 +24,6 @@ public class GetAllMainQueryHandler : IRequestHandler<GetAllMainQueryRequest, ID
     {
         var configuration = new MapperConfiguration(cfg => cfg.AddProfile<MainProfile>());
         configuration.AssertConfigurationIsValid();
-
-
-        var mains = await _mainReadRepository.GetAllAsync(tracking: false, skip: request.Page * request.Size, take: request.Size);
         #region
         //var result = mains.Select(main => new GetAllMainQueryResponse
         //{
@@ -38,23 +36,23 @@ public class GetAllMainQueryHandler : IRequestHandler<GetAllMainQueryRequest, ID
         //    DeleteDate = main.DeleteDate,
         //    UpdateDate = main.UpdateDate,
         //}).ToList();       
-        #endregion
+        #endregion 
 
-        var mains2 = await _mainReadRepository.GetAllAsync(
+        var mains = await _mainReadRepository.GetAllAsync(
                     tracking: false,
                     skip: request.Page * request.Size,
                     take: request.Size
                 );
 
-        var orderedMains2 = mains2
+        var orderedMains2 = mains
             .OrderByDescending(m => m.Id)
             .ThenByDescending(m => m.CreateDate)
-            .ToList();
-
-        var result2 = _mapper.Map<List<GetAllMainQueryResponse>>(orderedMains2);
-         
+            .ToList(); 
 
         var result = _mapper.Map<List<GetAllMainQueryResponse>>(mains.OrderByDescending(z => z.Id).ThenByDescending(z => z.CreateDate));
         return result != null ? new SuccessDataResult<List<GetAllMainQueryResponse>>(result, Messages.ListSuccess) : new ErrorDataResult<List<GetAllMainQueryResponse>>(result, Messages.ListFailed);
     }
+
+
 }
+
