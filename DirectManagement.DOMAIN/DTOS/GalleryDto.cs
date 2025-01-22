@@ -1,8 +1,8 @@
-﻿using DirectManagement.DOMAIN.Entities.BaseEntitiy;
+﻿using DirectManagement.DOMAIN.DTOS.BaseDtos; 
 
-namespace DirectManagement.DOMAIN.Entities.Concretes;
+namespace DirectManagement.DOMAIN.DTOS;
 
-public class Gallery : Base
+public class GalleryDto:BaseDto
 {
     public string Title { get; set; }
     public string SubTitle { get; set; }
@@ -10,5 +10,4 @@ public class Gallery : Base
     public string BigImage { get; set; }
     public string ImageLink { get; set; }
     public char Status { get; set; }
-
 }
