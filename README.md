@@ -8,7 +8,7 @@ Backend geliştirme için .NET Core framework’ü kullanılmıştır.
 Veritabanı işlemleri, Entity Framework Core ile Code-First Yaklaşımı kullanılarak gerçekleştirilmiştir.
 Görevler ve kullanıcı verileri, MsSQL veritabanında saklanmaktadır.
 Kimlik doğrulama süreci, kullanıcıların e-posta doğrulaması ile sağlanmaktadır.
-API uç noktaları, kullanıcıların görev oluşturma, düzenleme, silme ve durum değiştirme işlemlerini gerçekleştirmesine olanak tanır. Admin rolüne sahip kullanıcılar, tüm süreçleri görme ve düzenleme yetkisine sahiptir.
+API uç noktaları, kullanıcıların görev oluşturma, düzenleme, silme ve durum değiştirme işlemlerini gerçekleştirmesine olanak tanır.
 
 Geliştirme Hedefi;
 Projede, mevcut ve yeni teknolojilerin entegrasyonu ön planda tutulmaktadır. Uygulama geliştirme süreci devam etmekte olup, her yeni özellik veya iyileştirme, düzenli olarak commit edilerek proje ilerletilmektedir.
